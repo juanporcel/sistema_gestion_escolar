@@ -1,8 +1,14 @@
 <?php
 // /app/controllers/personas/listado.php
 
-// ⚠️ RUTA CORREGIDA: Sube dos niveles para llegar a la carpeta principal (sge/)
-include ('../../config.php'); 
+// Asegurar inclusión usando una ruta basada en este archivo (__DIR__)
+$configPath = dirname(__DIR__, 2) . '/config.php';
+if (file_exists($configPath)) {
+    require_once $configPath;
+} else {
+    echo "ERROR: No se encontró config.php en: $configPath";
+    die();
+}
 
 if (!isset($pdo)) {
     // Esto es un control de error. Si la conexión falla, se detiene aquí.
@@ -14,14 +20,15 @@ if (!isset($pdo)) {
 // para obtener el email y el nombre del rol, que son necesarios en la vista.
 $sql_personas = "
    SELECT 
-        p.apellido_nombre, 
-        p.dni,
-        p.fecha_nacimiento, 
-        p.profesion, 
-        p.direccion, 
-        p.celular,
-        p.email,
-        p.estado
+       p.usuario_id,
+       p.apellido_nombre, 
+       p.dni,
+       p.fecha_nacimiento, 
+       p.profesion, 
+       p.direccion, 
+       p.celular,
+       p.email,
+       p.estado
     FROM personas p
     ORDER BY p.id_persona ASC
 ";

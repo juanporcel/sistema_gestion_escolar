@@ -109,7 +109,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="<?=APP_URL;?>/admin" class="brand-link">
-            <img src="https://scontent.fafa1-1.fna.fbcdn.net/v/t39.30808-6/465977285_122095120022617744_5902780360609075297_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFqJAecW-T1aSt9SEe12dhF51LYc4T3cOnnUthzhPdw6fuf0K7BZCuvIUxS95S4O6dVb6__aXftnoSZ3IXDrfjj&_nc_ohc=bxu7zdUt1PAQ7kNvwG34yZ6&_nc_oc=AdkJM8Q4abc4cDQzir-8FYoLZpjhnZZ2UA9IZbnkr1ikeuy6vNrGzuwm5bHDmIgbBSo&_nc_zt=23&_nc_ht=scontent.fafa1-1.fna&_nc_gid=mI7a0_wd3JJ7gLttKu7OJA&oh=00_AfjPhBnlo7IfEOsgau_xrSEXmVquB0sg7uo5wKcvsJ7TOw&oe=69154D07" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img src="<?=APP_URL;?>/public/images/configuracion/2024-01-08-20-40-46logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">GESTIÓN ESCOLAR</span>
         </a>
 
@@ -134,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="#" onclick="event.preventDefault();" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-gear"></i></i>
                             <p>
                                 Configuraciones
@@ -154,7 +154,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="#" onclick="event.preventDefault();" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-bookshelf"></i></i>
                             <p>
                                 Niveles
@@ -172,7 +172,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="#" onclick="event.preventDefault();" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-bar-chart-steps"></i></i>
                             <p>
                                 Grados
@@ -190,7 +190,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="#" onclick="event.preventDefault();" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-book-half"></i></i>
                             <p>
                                 Materias
@@ -210,7 +210,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="#" onclick="event.preventDefault();" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-bookmarks"></i></i>
                             <p>
                                 Roles
@@ -228,7 +228,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="#" onclick="event.preventDefault();" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-people-fill"></i></i>
                             <p>
                                 Usuarios
@@ -248,11 +248,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     
                     
                     
-                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                            <li class="nav-item">
+                                <a href="#" onclick="event.preventDefault();" class="nav-link active">
                             <i class="nav-icon fas"><i class="nav-icon bi bi-people-fill"></i></i>
                             <p>
-                                Personas (En desarrollo)
+                                Personas  
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>

@@ -36,6 +36,7 @@ include ('../../app/controllers/personas/listado.php'); // Obtiene $personas
                                     <th><center>Celular</center></th>
                                     <th><center>Email</center></th>
                                     <th><center>Estado</center></th>
+                                    <th><center>Acciones</center></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -77,7 +78,7 @@ include ('../../app/controllers/personas/listado.php'); // Obtiene $personas
                                                             denyButtonText: 'Cancelar',
                                                         }).then((result) => {
                                                             if (result.isConfirmed) {
-                                                                var form = $('#miFormulario<?=$usuario_id;?>');
+                                                                var form = document.getElementById('miFormulario<?=$usuario_id;?>');
                                                                 form.submit();
                                                             }
                                                         });
@@ -98,15 +99,24 @@ include ('../../app/controllers/personas/listado.php'); // Obtiene $personas
             </div></div>
     </div>
 <?php
-include ('../../../admin/layout/parte2.php');
-include ('../../../layout/mensajes.php');
+include ('../layout/parte2.php');
+include ('../../layout/mensajes.php');
 ?>
 <script>
-    $(function () {
-        $("#example1").DataTable({
-            //... (configuración de DataTables) ...
-            "responsive": true, "lengthChange": true, "autoWidth": false,
-            //... (botones y lenguaje) ...
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
+    (function waitForjQueryAndDataTables() {
+        if (window.jQuery && jQuery.fn && jQuery.fn.DataTable) {
+            jQuery(function () {
+                var table = jQuery("#example1").DataTable({
+                    "responsive": true,
+                    "lengthChange": true,
+                    "autoWidth": false
+                });
+                if (table && typeof table.buttons === 'function') {
+                    try { table.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)'); } catch(e){}
+                }
+            });
+        } else {
+            setTimeout(waitForjQueryAndDataTables, 50);
+        }
+    })();
 </script>
