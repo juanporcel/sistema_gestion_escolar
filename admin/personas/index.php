@@ -43,7 +43,7 @@ include ('../../app/controllers/personas/listado.php'); // Obtiene $personas
                                 <?php
                                 $contador = 0;
                                 foreach ($personas as $persona){
-                                    $usuario_id = $persona['usuario_id'];
+                                    $id_persona = $persona['id_persona'];
                                     $contador = $contador +1; ?>
                                     <tr>
                                         <td style="text-align: center"><?=$contador;?></td>
@@ -57,8 +57,8 @@ include ('../../app/controllers/personas/listado.php'); // Obtiene $personas
                                         <td><?= $persona['estado'] == 1 ? 'Alta' : 'Baja'; ?></td>
                                         <td style="text-align: center">
                                             <div class="btn-group" role="group" aria-label="Acciones">
-                                                <a href="show.php?id=<?=$usuario_id;?>" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
-                                                <a href="edit.php?id=<?=$usuario_id;?>" type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
+                                                <a href="show.php?id=<?=$id_persona;?>" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
+                                                <a href="edit.php?id=<?=$id_persona;?>" type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
                                                 
                                                 
                                             </div>

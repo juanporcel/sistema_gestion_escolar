@@ -23,7 +23,7 @@ include ('../app/config.php');
 <div class="login-box">
     <center>
         <br>
-        <img src="https://scontent.fafa1-1.fna.fbcdn.net/v/t39.30808-6/465977285_122095120022617744_5902780360609075297_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFqJAecW-T1aSt9SEe12dhF51LYc4T3cOnnUthzhPdw6fuf0K7BZCuvIUxS95S4O6dVb6__aXftnoSZ3IXDrfjj&_nc_ohc=bxu7zdUt1PAQ7kNvwG34yZ6&_nc_oc=AdkJM8Q4abc4cDQzir-8FYoLZpjhnZZ2UA9IZbnkr1ikeuy6vNrGzuwm5bHDmIgbBSo&_nc_zt=23&_nc_ht=scontent.fafa1-1.fna&_nc_gid=mI7a0_wd3JJ7gLttKu7OJA&oh=00_AfjPhBnlo7IfEOsgau_xrSEXmVquB0sg7uo5wKcvsJ7TOw&oe=69154D07"
+        <img src="https://colegiosantamariadelvallegrande.com/wp-content/uploads/2024/05/cropped-Santa-Maria-Logo-.png"
              width="150px" alt=""><br><br>
     </center>
     <div class="login-logo">

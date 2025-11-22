@@ -20,6 +20,7 @@ if (!isset($pdo)) {
 // para obtener el email y el nombre del rol, que son necesarios en la vista.
 $sql_personas = "
    SELECT 
+       p.id_persona,
        p.usuario_id,
        p.apellido_nombre, 
        p.dni,

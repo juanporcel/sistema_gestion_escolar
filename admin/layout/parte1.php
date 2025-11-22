@@ -32,6 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/fontawesome-free/css/all.min.css">
+    
     <!-- Theme style -->
     <link rel="stylesheet" href="<?=APP_URL;?>/public/dist/css/adminlte.min.css">
 
@@ -45,6 +46,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="<?=APP_URL;?>/public/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -133,7 +138,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
 
-
                     <li class="nav-item">
                         <a href="#" onclick="event.preventDefault();" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-gear"></i></i>
@@ -152,7 +156,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
-
+                    <li class="nav-item">
+                        <a href="#" onclick="event.preventDefault();" class="nav-link active">
+                            <i class="nav-icon fas"><i class="bi bi-people"></i></i>
+                            <p>
+                                Familias
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?=APP_URL;?>/admin/familias" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Listado de familias</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li class="nav-item">
                         <a href="#" onclick="event.preventDefault();" class="nav-link active">
@@ -208,8 +228,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
-
-
                     <li class="nav-item">
                         <a href="#" onclick="event.preventDefault();" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-bookmarks"></i></i>
@@ -245,12 +263,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         </ul>
                     </li>
-                    
-                    
-                    
-                    
-                            <li class="nav-item">
-                                <a href="#" onclick="event.preventDefault();" class="nav-link active">
+
+                    <li class="nav-item">
+                        <a href="#" onclick="event.preventDefault();" class="nav-link active">
                             <i class="nav-icon fas"><i class="nav-icon bi bi-people-fill"></i></i>
                             <p>
                                 Personas  
@@ -267,13 +282,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
-
-
-
-
-
-
-
                     <li class="nav-item">
                         <a href="<?=APP_URL;?>/login/logout.php" class="nav-link" style="background-color: #eb2d14;color: black">
                             <i class="nav-icon fas"><i class="bi bi-door-open"></i></i>
@@ -282,8 +290,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </a>
                     </li>
-
-
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

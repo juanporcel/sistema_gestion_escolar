@@ -41,7 +41,7 @@ include ('../../app/controllers/roles/listado_de_roles.php');
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Fecha de nacimiento</label>
-                                            <input type="date" name="fecha_nacimiento" class="form-control" required>
+                                            <input type="date" name="fecha_nacimiento" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -49,25 +49,25 @@ include ('../../app/controllers/roles/listado_de_roles.php');
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Profesión</label>
-                                            <input type="text" name="profesion" class="form-control" required>
+                                            <input type="text" name="profesion" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Dirección</label>
-                                            <input type="text" name="direccion" class="form-control" required>
+                                            <input type="text" name="direccion" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Celular</label>
-                                            <input type="text" name="celular" class="form-control" required>
+                                            <input type="text" name="celular" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Email</label>
-                                            <input type="email" name="email" class="form-control" required>
+                                            <input type="email" name="email" class="form-control">
                                         </div>
                                     </div>
                                 </div>

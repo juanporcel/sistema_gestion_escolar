@@ -41,6 +41,9 @@
 <script src="<?=APP_URL;?>/public/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?=APP_URL;?>/public/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+<!-- Select2 -->
+<script src="<?=APP_URL;?>/public/plugins/select2/js/select2.full.min.js"></script>
+
 
 <!-- AdminLTE App -->
 <script src="<?=APP_URL;?>/public/dist/js/adminlte.min.js"></script>
