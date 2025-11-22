@@ -11,9 +11,10 @@ if(isset($_SESSION['sesion_email'])){
     foreach ($datos_sesion_usuarios as $datos_sesion_usuario){
        $nombre_sesion_usuario = $datos_sesion_usuario['nombres'];
     }
-}else{
-    echo "el usuario no paso por el login";
+} else {
+    // No mostrar texto antes de redirigir — provoca "Headers already sent"
     header('Location:'.APP_URL."/login");
+    exit;
 }
 ?>
 <!DOCTYPE html>

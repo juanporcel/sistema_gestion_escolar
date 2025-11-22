@@ -49,41 +49,18 @@ include ('../../app/controllers/personas/listado.php'); // Obtiene $personas
                                         <td style="text-align: center"><?=$contador;?></td>
                                         <td><?=$persona['apellido_nombre'];?></td>
                                         <td><?=$persona['dni'];?></td>
-                                        <td><?=$persona['fecha_nacimiento'];?></td>
+                                        <td><?php echo !empty($persona['fecha_nacimiento']) ? date('d/m/Y', strtotime($persona['fecha_nacimiento'])) : ''; ?></td>
                                         <td><?=$persona['profesion'];?></td>
                                         <td><?=$persona['direccion'];?></td>
                                         <td><?=$persona['celular'];?></td>
                                         <td><?=$persona['email'];?></td>
-                                        <td><?=$persona['estado'];?></td>
+                                        <td><?= $persona['estado'] == 1 ? 'Alta' : 'Baja'; ?></td>
                                         <td style="text-align: center">
                                             <div class="btn-group" role="group" aria-label="Acciones">
                                                 <a href="show.php?id=<?=$usuario_id;?>" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                                                 <a href="edit.php?id=<?=$usuario_id;?>" type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
                                                 
-                                                <form action="<?=APP_URL;?>/app/controllers/personas/delete.php" onclick="preguntar<?=$usuario_id;?>(event)" method="post" id="miFormulario<?=$usuario_id;?>">
-                                                    <input type="text" name="usuario_id" value="<?=$usuario_id;?>" hidden>
-                                                    <button type="submit" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
-                                                </form>
-                                                <script>
-                                                    function preguntar<?=$usuario_id;?>(event) {
-                                                        event.preventDefault();
-                                                        Swal.fire({
-                                                            title: 'Eliminar Persona',
-                                                            text: '¿Desea eliminar la persona (desactivar usuario)?',
-                                                            icon: 'question',
-                                                            showDenyButton: true,
-                                                            confirmButtonText: 'Eliminar',
-                                                            confirmButtonColor: '#a5161d',
-                                                            denyButtonColor: '#270a0a',
-                                                            denyButtonText: 'Cancelar',
-                                                        }).then((result) => {
-                                                            if (result.isConfirmed) {
-                                                                var form = document.getElementById('miFormulario<?=$usuario_id;?>');
-                                                                form.submit();
-                                                            }
-                                                        });
-                                                    }
-                                                </script>
+                                                
                                             </div>
                                         </td>
                                     </tr>
@@ -109,7 +86,31 @@ include ('../../layout/mensajes.php');
                 var table = jQuery("#example1").DataTable({
                     "responsive": true,
                     "lengthChange": true,
-                    "autoWidth": false
+                    "autoWidth": false,
+                    "language": {
+                        "decimal": ",",
+                        "thousands": ".",
+                        "processing": "Procesando...",
+                        "search": "Buscar:",
+                        "lengthMenu": "Mostrar _MENU_ registros",
+                        "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                        "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                        "infoFiltered": "(filtrado de _MAX_ entradas totales)",
+                        "infoPostFix": "",
+                        "loadingRecords": "Cargando...",
+                        "zeroRecords": "No se encontraron registros",
+                        "emptyTable": "No hay datos disponibles en la tabla",
+                        "paginate": {
+                            "first": "Primero",
+                            "previous": "Anterior",
+                            "next": "Siguiente",
+                            "last": "Último"
+                        },
+                        "aria": {
+                            "sortAscending": ": activar para ordenar la columna ascendente",
+                            "sortDescending": ": activar para ordenar la columna descendente"
+                        }
+                    }
                 });
                 if (table && typeof table.buttons === 'function') {
                     try { table.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)'); } catch(e){}

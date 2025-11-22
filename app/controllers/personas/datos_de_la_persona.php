@@ -10,7 +10,7 @@ $sql_persona = "
         per.*, 
         usu.id_usuario AS id_usuario, 
         usu.email, 
-        usu.fyh_creacion,
+        usu.fyh_creacion AS usuario_fyh_creacion,
         usu.estado AS estado, 
         rol.nombre_rol 
     FROM personas AS per 

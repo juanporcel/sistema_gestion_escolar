@@ -4,6 +4,19 @@
 include ('../../../app/config.php');
 session_start();
 
+// --- DEBUG: registrar POST (temporal) ---
+$logDir = dirname(__DIR__, 3) . '/storage/logs';
+if (!is_dir($logDir)) {
+    @mkdir($logDir, 0755, true);
+}
+$logFile = $logDir . '/personas_update_debug.log';
+$postToLog = $_POST;
+// No registrar contraseñas
+if (isset($postToLog['password'])) unset($postToLog['password']);
+if (isset($postToLog['password_repet'])) unset($postToLog['password_repet']);
+@file_put_contents($logFile, "[".date('Y-m-d H:i:s')."] POST: " . json_encode($postToLog, JSON_UNESCAPED_UNICODE) . PHP_EOL, FILE_APPEND);
+// --- fin debug ---
+
 // 1. ID y Datos de USUARIOS
 $usuario_id = $_POST['usuario_id'];
 $rol_id = $_POST['rol_id'];
@@ -12,8 +25,7 @@ $password = $_POST['password'];
 $password_repet = $_POST['password_repet'];
 
 // 2. Datos de PERSONAS
-$nombres = $_POST['nombres'];
-$apellidos = $_POST['apellidos'];
+$apellido_nombre = isset($_POST['apellido_nombre']) ? trim($_POST['apellido_nombre']) : '';
 $ci = $_POST['ci'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
 $profesion = $_POST['profesion'];
@@ -51,12 +63,11 @@ try {
 
     // B. ACTUALIZAR TABLA 'personas'
     $sentencia_per = $pdo->prepare('UPDATE personas SET 
-        nombres = :nombres, apellidos = :apellidos, ci = :ci, fecha_nacimiento = :fecha_nacimiento, 
+        apellido_nombre = :apellido_nombre, ci = :ci, fecha_nacimiento = :fecha_nacimiento, 
         profesion = :profesion, direccion = :direccion, celular = :celular, fyh_actualizacion = :fyh_actualizacion
         WHERE usuario_id = :usuario_id');
     
-    $sentencia_per->bindParam(':nombres', $nombres);
-    $sentencia_per->bindParam(':apellidos', $apellidos);
+    $sentencia_per->bindParam(':apellido_nombre', $apellido_nombre);
     $sentencia_per->bindParam(':ci', $ci);
     $sentencia_per->bindParam(':fecha_nacimiento', $fecha_nacimiento);
     $sentencia_per->bindParam(':profesion', $profesion);
