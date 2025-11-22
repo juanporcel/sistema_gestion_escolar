@@ -95,3 +95,6 @@ include ('../../app/controllers/roles/listado_de_roles.php');
 <?php
 
 include ('../../admin/layout/parte2.php');
+include ('../../layout/mensajes.php');
+
+?>

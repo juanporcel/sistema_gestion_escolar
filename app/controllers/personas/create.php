@@ -1,56 +1,75 @@
 <?php
-// /app/controllers/personas/create.php
 
-include ('../../../app/config.php');
+
+
 session_start();
 
-// 1. Datos de PERSONAS
 
-$apellido_nombre = $_POST['apellido_nombre'];
-$dni = $_POST['dni'];
-$fecha_nacimiento = $_POST['fecha_nacimiento'];
-$profesion = $_POST['profesion'];
-$direccion = $_POST['direccion'];
-$celular = $_POST['celular'];
-$email = $_POST['email'];
+include ('../../../app/config.php');
+
+// Verificar que el usuario esté logueado
+$usuario_id = $_SESSION['id_usuario'] ?? null;
+if (!$usuario_id) {
+    die("Error: usuario no autenticado.");
+}
+
+// Datos del formulario
+$apellido_nombre  = $_POST['apellido_nombre'] ?? '';
+$dni              = $_POST['dni'] ?? '';
+$fecha_nacimiento = $_POST['fecha_nacimiento'] ?? '';
+$profesion        = $_POST['profesion'] ?? '';
+$direccion        = $_POST['direccion'] ?? '';
+$celular          = $_POST['celular'] ?? '';
+$email            = $_POST['email'] ?? '';
 
 $fyh_creacion = date('Y-m-d H:i:s');
 $estado = 1;
 
+// Verificar si el DNI ya existe
+$sentencia = $pdo->prepare("SELECT * FROM personas WHERE dni = :dni");
+$sentencia->bindParam(':dni', $dni);
+$sentencia->execute();
+$persona = $sentencia->fetch(PDO::FETCH_ASSOC);
+
+if ($persona) {
+    $_SESSION['mensaje'] = "Este DNI ya se encuentra registrado.";
+    $_SESSION['icono'] = "error";
+    header('Location:'.APP_URL."/admin/personas/create.php");
+    exit;
+}
+
+
 try {
     $pdo->beginTransaction();
 
-   $sentencia_perusu = $pdo->prepare('INSERT INTO personas 
-    (apellido_nombre, dni, fecha_nacimiento, profesion, direccion, celular, email) 
-    VALUES (:apellido_nombre, :dni, :fecha_nacimiento, :profesion, :direccion, :celular, :email)');
+    $sentencia = $pdo->prepare('
+        INSERT INTO personas 
+        (apellido_nombre, dni, fecha_nacimiento, profesion, direccion, celular, email, fyh_creacion, estado, usuario_id)
+        VALUES (:apellido_nombre, :dni, :fecha_nacimiento, :profesion, :direccion, :celular, :email, :fyh_creacion, :estado, :usuario_id)
+    ');
 
-$sentencia_perusu->bindParam(':apellido_nombre', $apellido_nombre);
-$sentencia_perusu->bindParam(':dni', $dni);
-$sentencia_perusu->bindParam(':fecha_nacimiento', $fecha_nacimiento);
-$sentencia_perusu->bindParam(':profesion', $profesion);
-$sentencia_perusu->bindParam(':direccion', $direccion);
-$sentencia_perusu->bindParam(':celular', $celular);
-$sentencia_perusu->bindParam(':email', $email);
+    $sentencia->bindParam(':apellido_nombre', $apellido_nombre);
+    $sentencia->bindParam(':dni', $dni);
+    $sentencia->bindParam(':fecha_nacimiento', $fecha_nacimiento);
+    $sentencia->bindParam(':profesion', $profesion);
+    $sentencia->bindParam(':direccion', $direccion);
+    $sentencia->bindParam(':celular', $celular);
+    $sentencia->bindParam(':email', $email);
+    $sentencia->bindParam(':fyh_creacion', $fyh_creacion);
+    $sentencia->bindParam(':estado', $estado);
+    $sentencia->bindParam(':usuario_id', $usuario_id);
 
-$sentencia_perusu->execute();
+    $sentencia->execute();
+    $pdo->commit();
 
-
-    $pdo->commit(); 
-    
-    $_SESSION['mensaje'] = "Persona y Usuario registrados correctamente.";
-    /*header('Location:'.APP_URL."/admin/personas");*/
-    echo "<pre>";
-print_r($_POST);
-echo $e->getMessage(); // si estás dentro del catch
-exit; 
+    $_SESSION['mensaje'] = "Persona registrada correctamente.";
+    header('Location:'.APP_URL."/admin/personas");
+    exit;
 
 } catch (Exception $e) {
-    $pdo->rollBack(); 
-    
-    if ($e->getCode() == 23000) { 
-    $_SESSION['mensaje'] = "Error: El DNI ya existe en el sistema.";
+    if ($pdo->inTransaction()) $pdo->rollBack();
+    $_SESSION['mensaje'] = "Error al registrar la persona: " . $e->getMessage();
+    header('Location:'.APP_URL."/admin/personas/create.php");
+    exit;
 }
 
-    header('Location:'.APP_URL."/admin/personas/create.php"); 
-}
-?>

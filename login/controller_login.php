@@ -25,9 +25,12 @@ foreach ($usuarios as $usuario){
     $contador = $contador +1;
 }
 
+
+
 if( ($contador>0) && (password_verify($password,$password_tabla)) ){
     echo "los datos son correctos";
     session_start();
+    $_SESSION['id_usuario'] = $usuario['id_usuario'];
     $_SESSION['mensaje'] = "Bienvenido al sistema";
     $_SESSION['icono'] = "success";
     $_SESSION['sesion_email'] = $email;
@@ -38,3 +41,5 @@ if( ($contador>0) && (password_verify($password,$password_tabla)) ){
     $_SESSION['mensaje'] = "Los datos introducidos son incorrectos, vuelva a intentarlo";
     header('Location:'.APP_URL."/login");
 }
+
+
